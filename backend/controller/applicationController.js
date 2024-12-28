@@ -118,7 +118,25 @@ export const updateStatus = async(req,res)=>{
             })
         };
 
-        // find the application by application id 
+        // find the application by applicant id 
+        const application = await Application.findOne({
+            _id:applicationId
+        })
+        if(!application){
+            return res.status(404).json({
+                message:'Application not found',
+                success:false
+            })
+        }
+        // update the sataus
+        application.status = status.toLowerCase();
+        await application.save();
+
+        return res.status(200).json({
+            message:"status updated successfuly",
+            success:true
+        });
+        
     } catch (error) {
         console.log(error)
     }
