@@ -1,13 +1,12 @@
-import react from "react"
-import { Link } from "react-router-dom";
-import {
+ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar , AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { LogOut, User2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const user = false;
@@ -20,17 +19,16 @@ const Navbar = () => {
                 </div>
                 <div className="flex gap-5">
                     <ul className="flex items-center font-medium gap-5">
-                        {/* <li> <Link> Home </Link> </li> */}
-                        <li>Home </li>
-                        <li>Jobs </li>
-                        <li>Broswer </li>
+                        <Link to={'/home'}>   Home </Link>
+                        <Link to={'/Jobs'}> Jobs </Link>
+                        <Link to={'/browser'}> Browser </Link>
                     </ul>
 
                     {
                         !user ?(
                             <div className="flex items-center gap-2"> 
-                                <Button variant ="outline">Login</Button>
-                                <Button className="bg-[#6f43ba] hover:bg-[#4f2891]">SignUp</Button>
+                                <Link to={'/login'}><Button variant='outline-none'>Login</Button></Link>
+                              <Link to={'/signup'}> <Button className="bg-[#6f43ba] hover:bg-[#4f2891] text-white ">SignUp</Button></Link>
                                 </div>
                         ):(
                             <Popover>
@@ -52,7 +50,8 @@ const Navbar = () => {
                                 <div className="flex flex-col my-2">
                                     <div className="flex items-center gap-2 w-fit cursor-pointer text-gray-600">
                                         <User2 />
-                                        <Button variant="link">View Profile</Button>
+                                        <Link to={'/login'}><Button variant="link">Login</Button></Link>
+                                        <Link to={'/signup'}><Button variant="link">SignUp</Button></Link>
                                     </div>
                                     <div className="flex items-center gap-2 w-fit cursor-pointer text-gray-600">
                                         <LogOut />
