@@ -6,6 +6,7 @@ import connectDB from "./utils/db.js";
 import userRoute from "./routes/userRoute.js";
 import companyRoute from './routes/companyRoute.js';
 import jobRouter from './routes/jobRoute.js';
+import applicationRoute from './routes/applicationRoute.js'
 const app = express();
 import dotenv from "dotenv";
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(cors(corsOptions));
 app.use("/api/v1/user",userRoute);
 app.use("/api/v1/company",companyRoute);
 app.use("/api/v1/job",jobRouter);
+app.use("/api/v1/application",applicationRoute)
 
 app.get("/",(req,res)=>{
     return res.status(200).json({
